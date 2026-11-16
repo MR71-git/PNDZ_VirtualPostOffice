@@ -61,3 +61,13 @@
 - Every other player is **denied collection**, even if they locate the parcel.
 - Authorization must be enforced server-side, and successful collection is atomic (only one claimant receives the parcel).
 - Implementation details remain pending verification of the group's supported server-side interface.
+
+## Physical parcel object — confirmed design v0.7
+- Each random delivery appears as a **physical postbox/mailbox mounted on a stand** at the validated town/city location.
+- A **flashing indicator light** makes the mailbox noticeable in the world.
+- The mailbox object is **removed when the parcel is successfully collected** by the notified recipient or a current member of their LBmaster's Advanced Groups party.
+- The mailbox object is also **removed when the parcel is deleted or expires** (6 real-world hours after first notification).
+- Access remains server-authorized; finding the object does not allow unrelated players to collect it.
+- Proposed safeguards: synchronize object removal to clients, prevent duplicate collection, and clean up orphaned objects after server restart.
+- Visual details (mailbox shape, stand, lamp color and blink pattern) and final model/assets are still to be determined.
+- Open decision: whether unauthorized players may see the mailbox but cannot interact with it (recommended), or whether visibility should be restricted.

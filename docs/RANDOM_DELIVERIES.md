@@ -1,6 +1,7 @@
 # Random Delivery Design — v0.3
 
 **Status:** Requirements and design only; no scripts.
+**Group integration:** External third-party party/group mod (exact mod to be supplied later).
 
 ## Confirmed requirements
 1. Random parcels expire no later than **6 real-world hours after the first notification** to the selected player.
@@ -22,7 +23,7 @@
 - Server-authoritative location validation and pickup permission checks.
 - A repeat notification or restart must not extend the original deadline.
 - Define whether group membership is checked at delivery time or collection time.
-- Define how the system integrates with the server's actual group/party mod; no group system has been selected yet.
+- Integrate with an external party/group mod (name/API unknown until supplied); do not assume DayZ Expansion Groups or implement a custom group system.
 - Define what location information is shown and whether it is visible to group members.
 - Decide whether packages are physical spawned objects or logical inventory attached to a pickup point.
 - Define fallback when no safe city/town location is found.
@@ -32,8 +33,16 @@
 > You missed your delivery! Your parcel is waiting at a pickup location. You or a member of your group have 6 hours from this notification to collect it.
 
 ## Open design questions
-- What group system is used (vanilla or third-party mod)?
+- Which external party/group mod and version is installed? How can membership be queried securely?
 - Should the player receive map coordinates, a marker, or just a town name?
 - Should the six-hour timer run while the recipient is offline? Proposed: yes, real time.
 - What minimum safe distance from toxic zones, water, roads and structures should be enforced?
 - Are parcel locations shared among group members automatically?
+
+## External group integration — design decision v0.4
+- **Confirmed:** An existing third-party party/group mod will be used; its name and integration details will follow.
+- **Not selected:** DayZ Expansion Groups or a custom PNDZ group system.
+- Keep group lookup behind a conceptual integration boundary so the postal system is not tied to an unconfirmed API.
+- Verify collection rights server-side; never trust client-supplied group membership.
+- Pending policy: membership at first notification versus at pickup, including players who join or leave the group.
+- If the group mod is missing or fails to respond, proposed safe fallback: only the notified recipient can collect (requires approval).

@@ -1,7 +1,7 @@
 # Random Delivery Design — v0.3
 
 **Status:** Requirements and design only; no scripts.
-**Group integration:** External third-party party/group mod (exact mod to be supplied later).
+**Group integration:** LBmaster's Advanced Groups (integration API/version to be verified).
 
 ## Confirmed requirements
 1. Random parcels expire no later than **6 real-world hours after the first notification** to the selected player.
@@ -33,16 +33,22 @@
 > You missed your delivery! Your parcel is waiting at a pickup location. You or a member of your group have 6 hours from this notification to collect it.
 
 ## Open design questions
-- Which external party/group mod and version is installed? How can membership be queried securely?
+- Which version of LBmaster's Advanced Groups is installed, and what supported server-side interface exposes group membership?
 - Should the player receive map coordinates, a marker, or just a town name?
 - Should the six-hour timer run while the recipient is offline? Proposed: yes, real time.
 - What minimum safe distance from toxic zones, water, roads and structures should be enforced?
 - Are parcel locations shared among group members automatically?
 
 ## External group integration — design decision v0.4
-- **Confirmed:** An existing third-party party/group mod will be used; its name and integration details will follow.
+- **Confirmed:** **LBmaster's Advanced Groups** is the selected external group system. Its version and supported server-side integration interface still need verification.
 - **Not selected:** DayZ Expansion Groups or a custom PNDZ group system.
 - Keep group lookup behind a conceptual integration boundary so the postal system is not tied to an unconfirmed API.
 - Verify collection rights server-side; never trust client-supplied group membership.
 - Pending policy: membership at first notification versus at pickup, including players who join or leave the group.
 - If the group mod is missing or fails to respond, proposed safe fallback: only the notified recipient can collect (requires approval).
+
+## Selected group dependency — v0.5
+- Selected: **LBmaster's Advanced Groups**.
+- Confirm compatibility with the installed release and its supported server-side group membership API before implementation.
+- Verify whether a recipient's current group members can be queried at collection time, and how membership changes are handled.
+- No API classes, method names, or dependency declarations are assumed until documentation or mod files are reviewed.

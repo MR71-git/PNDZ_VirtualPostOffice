@@ -58,7 +58,12 @@ A persistent virtual postal service for DayZ: players and moderators send items,
 8. Begin development **only after explicit approval**.
 9. Test, optimize and prepare release.
 
-## Potential extensions (ideas only)
+## Requested functional extensions (design wishlist)
+The following **10 extensions have been explicitly requested** and are tracked in [Functional Wishlist](docs/FUNCTIONAL_WISHLIST.md): parcel tracking; nearest pickup point; loot categories; personal cooldown; weighted loot tables; audit log; item blacklist; offline mail; sending limits; webhooks.
+
+These are design requirements awaiting detailed decisions, **not implemented features**.
+
+## Other potential extensions (ideas only)
 Parcel tracking; shipping fees; cash on delivery; anonymous parcels; returns to sender; map markers; nearest pickup point; pickup capacity; role-restricted pickup points; weighted common/rare/epic/legendary reward tiers; special delivery events; player cooldowns; prohibited-item blacklist; send limits; offline mail; Discord webhooks.
 
 See the GitHub Issues for individual design decisions and planning work. No implementation code is part of this initial repository.

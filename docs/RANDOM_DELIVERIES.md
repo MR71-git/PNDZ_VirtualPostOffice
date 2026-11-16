@@ -71,3 +71,21 @@
 - Proposed safeguards: synchronize object removal to clients, prevent duplicate collection, and clean up orphaned objects after server restart.
 - Visual details (mailbox shape, stand, lamp color and blink pattern) and final model/assets are still to be determined.
 - Open decision: whether unauthorized players may see the mailbox but cannot interact with it (recommended), or whether visibility should be restricted.
+
+## Public mailbox visibility and personalized token — v0.8
+### Confirmed
+- Every player can see the physical mailbox and flashing indicator.
+- The intended recipient receives a **personalized access token** for the random parcel.
+- To open the mailbox, a player must present the correct token **in their hands**.
+- If the player does not have a token in hand, the mailbox prompts for the intended recipient's token.
+- An incorrect token does not unlock the mailbox.
+- The mailbox and its flashing light are removed when the parcel is collected, deleted, or expires.
+- Previous confirmed collection eligibility still applies: recipient or **current** members of their LBmaster's Advanced Groups party; all others are denied.
+
+### Design proposals pending approval
+- Bind each token to the parcel ID and intended recipient, and verify it server-side; prevent re-use and duplication.
+- Require **both** a valid token and recipient/current-group membership to release the parcel, so a stolen token alone cannot grant access.
+- Group members could physically borrow the recipient's token to collect; define whether token transfer is permitted and how the recipient receives the token.
+- Prompt wording: 'This mailbox is locked. Present the recipient's delivery token in your hands.'
+- Decide whether the token is consumed on successful collection and removed when the parcel expires.
+- Decide token delivery/replacement behavior if the recipient is offline, has full inventory, loses the token, or dies.

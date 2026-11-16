@@ -44,11 +44,20 @@
 - **Not selected:** DayZ Expansion Groups or a custom PNDZ group system.
 - Keep group lookup behind a conceptual integration boundary so the postal system is not tied to an unconfirmed API.
 - Verify collection rights server-side; never trust client-supplied group membership.
-- Pending policy: membership at first notification versus at pickup, including players who join or leave the group.
+- **Confirmed policy:** evaluate membership at pickup time. Players joining the recipient's group gain access; players leaving lose access.
 - If the group mod is missing or fails to respond, proposed safe fallback: only the notified recipient can collect (requires approval).
 
 ## Selected group dependency — v0.5
 - Selected: **LBmaster's Advanced Groups**.
 - Confirm compatibility with the installed release and its supported server-side group membership API before implementation.
-- Verify whether a recipient's current group members can be queried at collection time, and how membership changes are handled.
+- Confirm supported API for current membership at collection time; group membership changes must take effect immediately for access control.
 - No API classes, method names, or dependency declarations are assumed until documentation or mod files are reviewed.
+
+## Confirmed access-control policy — v0.6
+- The notified recipient **always** has collection permission for their own unexpired parcel.
+- Current members of the recipient's LBmaster's Advanced Groups party may collect the parcel.
+- Membership is evaluated **at the moment of collection**, not frozen at delivery.
+- Newly joined group members gain access; former members immediately lose access.
+- Every other player is **denied collection**, even if they locate the parcel.
+- Authorization must be enforced server-side, and successful collection is atomic (only one claimant receives the parcel).
+- Implementation details remain pending verification of the group's supported server-side interface.

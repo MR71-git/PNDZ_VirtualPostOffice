@@ -16,6 +16,14 @@ A persistent virtual postal service for DayZ: players and moderators send items,
 - All project communication and documentation are in English, even if requirements arrive in Dutch.
 - Do not begin scripting until explicitly approved.
 
+
+## Random delivery requirements — update v0.3
+- Random parcels must be collected within **6 real-world hours from the first notification**; this is separate from the standard 7-day inbox retention rule.
+- Server chooses a random suitable delivery location **within a city or town**, excluding water, toxic zones, and unsuitable terrain.
+- Only the notified recipient or a member of that player's group may retrieve the package; server-side authorization is required.
+- The original notification timestamp must remain persistent across restarts and repeat notifications must not reset the deadline (design recommendation).
+- Design still needs decisions on supported group systems, location visibility, safe placement validation, and expiry cleanup.
+
 ## PNDZ development conventions
 - Item and mod classnames use the `PNDZ_` prefix.
 - Author: `PNDZ`.

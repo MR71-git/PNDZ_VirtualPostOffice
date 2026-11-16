@@ -85,7 +85,18 @@
 ### Design proposals pending approval
 - Bind each token to the parcel ID and intended recipient, and verify it server-side; prevent re-use and duplication.
 - Require **both** a valid token and recipient/current-group membership to release the parcel, so a stolen token alone cannot grant access.
-- Group members could physically borrow the recipient's token to collect; define whether token transfer is permitted and how the recipient receives the token.
+- **Confirmed:** A current group member may collect only while physically holding the recipient's original token in their hands. The token can be handed to a group member; holding it does not override the group-membership requirement.
 - Prompt wording: 'This mailbox is locked. Present the recipient's delivery token in your hands.'
 - Decide whether the token is consumed on successful collection and removed when the parcel expires.
 - Decide token delivery/replacement behavior if the recipient is offline, has full inventory, loses the token, or dies.
+
+## Confirmed token-sharing rule — v0.9
+- The recipient receives a personalized token bound to the specific random delivery.
+- To open the mailbox, **both** conditions must be met: (1) the player holds the recipient's correct token in their hands; and (2) the player is either the named recipient or a **current** member of the recipient's LBmaster's Advanced Groups party.
+- Group members must use **the recipient's token**; they do not receive separate tokens.
+- If the recipient lends the token to a current group member, that member can collect while membership remains valid.
+- A former group member, unrelated player, or token thief outside the recipient's current group is denied even with the correct token.
+- An eligible player without the token in hand is prompted to present it and cannot collect.
+- Check eligibility and token validity server-side at collection time; successful collection must be single-use and atomic.
+- Mailbox and beacon remain visible to everyone until collected or expired, then are removed.
+- Open implementation design decisions: token issuance/delivery, lost-token recovery, token cleanup, and supported Advanced Groups API.

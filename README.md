@@ -1,3 +1,5 @@
+> **PROJECT SPLIT NOTICE (2026-11-17):** This repository currently holds historical combined planning notes. The design is now split into two independent projects: [PNDZ Post Office](docs/POST_OFFICE_PROJECT.md) (persistent player/admin mail) and [PNDZ Missed Package](docs/MISSED_PACKAGE_PROJECT.md) (random six-hour token-locked deliveries). Earlier combined requirements below are archival and should not be treated as shared scope. A separate GitHub repository for Missed Package has not yet been created.
+
 # PNDZ Virtual Post Office
 
 **DayZ mod — Planning & Design (v0.1)**  
